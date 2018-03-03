@@ -5,26 +5,41 @@ import static org.junit.Assert.assertEquals;
 
 public class BedRoomTest {
 
-    BedRoom singleBedRoom;
+    BedRoom singleBedRoom, doubleBedRoom, familyBedRoom;
 
     @Before
     public void before(){
-        singleBedRoom = new BedRoom(RoomType.SINGLE);
+        singleBedRoom = new BedRoom(RoomType.SINGLE, 109.00);
+        doubleBedRoom = new BedRoom(RoomType.DOUBLE, 129.00);
+        familyBedRoom = new BedRoom(RoomType.FAMILY, 159.00);
     }
 
     @Test
     public void canGetType(){
         assertEquals(RoomType.SINGLE, singleBedRoom.getType());
+        assertEquals(RoomType.DOUBLE, doubleBedRoom.getType());
+        assertEquals(RoomType.FAMILY, familyBedRoom.getType());
     }
 
     @Test
     public void canGetCapacity(){
         assertEquals(1, singleBedRoom.getCapacity());
+        assertEquals(2, doubleBedRoom.getCapacity());
+        assertEquals(4, familyBedRoom.getCapacity());
     }
 
     @Test
     public void canGetTitle(){
         assertEquals("Single", singleBedRoom.getTitle());
+        assertEquals("Double", doubleBedRoom.getTitle());
+        assertEquals("Family", familyBedRoom.getTitle());
+    }
+
+    @Test
+    public void canGetRate(){
+        assertEquals(109.00, singleBedRoom.getRate(), 0.01);
+        assertEquals(129.00, doubleBedRoom.getRate(), 0.01);
+        assertEquals(159.00, familyBedRoom.getRate(), 0.01);
     }
 
 }
