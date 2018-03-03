@@ -9,20 +9,19 @@ public class HotelTest {
 
     Hotel hotel;
 
-    ArrayList<BedRoom> bedRooms;
-    ArrayList<ConferenceRoom> conferenceRooms;
-    ArrayList<DiningRoom> diningRooms;
-
 
     @Before
     public void before(){
         hotel = new Hotel();
     }
 
-//    @Test
-//    public void canGetBedrooms(){
-//        hotel.getBedRooms();
-//    }
+    // BEDROOM TESTS ///////////////////////////////////////////////////////////
+
+    @Test
+    public void canGetBedrooms(){
+        ArrayList<BedRoom> bedrooms = new ArrayList<BedRoom>();
+        assertEquals(bedrooms, hotel.getBedRooms());
+    }
 
     @Test
     public void canAddBedRoom___SINGLE(){
