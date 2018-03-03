@@ -25,8 +25,8 @@ public class HotelTest {
 //    }
 
     @Test
-    public void canAddSingleBedRoom(){
-        hotel.addSingleBedRoom(109.00, 101);
+    public void canAddBedRoom___SINGLE(){
+        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
         assertEquals(101, hotel.getBedRooms().get(0).getRoomNumber());
         assertEquals(109.00, hotel.getBedRooms().get(0).getRate(), 0.01);
         assertEquals(RoomType.SINGLE, hotel.getBedRooms().get(0).getType());
@@ -35,8 +35,8 @@ public class HotelTest {
     }
 
     @Test
-    public void canAddDoubleBedRoom(){
-        hotel.addDoubleBedRoom(129.00, 102);
+    public void canAddBedRoom___DOUBLE(){
+        hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
         assertEquals(102, hotel.getBedRooms().get(0).getRoomNumber());
         assertEquals(129.00, hotel.getBedRooms().get(0).getRate(), 0.01);
         assertEquals(RoomType.DOUBLE, hotel.getBedRooms().get(0).getType());
@@ -44,9 +44,10 @@ public class HotelTest {
         assertEquals(2, hotel.getBedRooms().get(0).getCapacity());
     }
 
+
     @Test
-    public void canAddFamilyBedRoom(){
-        hotel.addFamilyBedRoom(159.00, 103);
+    public void canAddBedRoom___FAMILY(){
+        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
         assertEquals(103, hotel.getBedRooms().get(0).getRoomNumber());
         assertEquals(159.00, hotel.getBedRooms().get(0).getRate(), 0.01);
         assertEquals(RoomType.FAMILY, hotel.getBedRooms().get(0).getType());
