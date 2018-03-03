@@ -9,9 +9,9 @@ public class BedRoomTest {
 
     @Before
     public void before(){
-        singleBedRoom = new BedRoom(RoomType.SINGLE, 109.00);
-        doubleBedRoom = new BedRoom(RoomType.DOUBLE, 129.00);
-        familyBedRoom = new BedRoom(RoomType.FAMILY, 159.00);
+        singleBedRoom = new BedRoom(RoomType.SINGLE, 109.00, 101);
+        doubleBedRoom = new BedRoom(RoomType.DOUBLE, 129.00, 102);
+        familyBedRoom = new BedRoom(RoomType.FAMILY, 159.00, 103);
     }
 
     @Test
@@ -42,4 +42,10 @@ public class BedRoomTest {
         assertEquals(159.00, familyBedRoom.getRate(), 0.01);
     }
 
+    @Test
+    public void canGetRoomNumber(){
+        assertEquals(101, singleBedRoom.getRoomNumber());
+        assertEquals(102, doubleBedRoom.getRoomNumber());
+        assertEquals(103, familyBedRoom.getRoomNumber());
+    }
 }
