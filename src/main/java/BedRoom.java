@@ -7,6 +7,7 @@ public class BedRoom extends Room {
         this.rate = rate;
     }
 
+    // Get the room rate (price):
     public Double getRate() {
         return rate;
     }

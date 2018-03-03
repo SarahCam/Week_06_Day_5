@@ -16,10 +16,12 @@ public enum RoomType {
         this.title = title;
     }
 
+    // Get the RoomType capacity for a given RoomType ENUM:
     public int getCapacity() {
         return capacity;
     }
 
+    // Get the RoomType title for a given RoomType ENUM:
     public String getTitle() {
         return title;
     }
