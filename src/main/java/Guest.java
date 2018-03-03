@@ -6,6 +6,7 @@ public class Guest {
         this.name = name;
     }
 
+    // Get the guest name, e.g. "Joe Bloggs":
     public String getName() {
         return name;
     }
