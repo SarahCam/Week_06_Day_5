@@ -6,10 +6,10 @@ public class Hotel {
     private ArrayList<ConferenceRoom> conferenceRooms;
     private ArrayList<DiningRoom> diningRooms;
 
-    public Hotel(ArrayList<BedRoom> bedRooms, ArrayList<ConferenceRoom> conferenceRooms, ArrayList<DiningRoom> diningRooms) {
-        this.bedRooms = bedRooms;
-        this.conferenceRooms = conferenceRooms;
-        this.diningRooms = diningRooms;
+    public Hotel() {
+        this.bedRooms = new ArrayList<BedRoom>();
+        this.conferenceRooms = new ArrayList<ConferenceRoom>();
+        this.diningRooms = new ArrayList<DiningRoom>();
     }
 
     public ArrayList<BedRoom> getBedRooms() {
@@ -34,5 +34,26 @@ public class Hotel {
 
     public void setDiningRooms(ArrayList<DiningRoom> diningRooms) {
         this.diningRooms = diningRooms;
+    }
+
+    // Add new single bedroom, with it's number and rate, (with no guests) to the hotel:
+    public void addSingleBedroom(Double rate, int roomNumber){
+        BedRoom bedroom = new BedRoom(RoomType.SINGLE, rate, roomNumber);
+        this.bedRooms.add(bedroom);
+        System.out.println("Added single bedroom: " + roomNumber + ", rate: " + rate);
+    }
+
+    // Add new double bedroom, with it's number and rate, (with no guests) to the hotel:
+    public void addDoubleBedroom(Double rate, int roomNumber){
+        BedRoom bedroom = new BedRoom(RoomType.DOUBLE, rate, roomNumber);
+        this.bedRooms.add(bedroom);
+        System.out.println("Added double bedroom: " + roomNumber + ", rate: " + rate);
+    }
+
+    // Add new family bedroom, with it's number and rate, (with no guests) to the hotel:
+    public void addFamilyBedroom(Double rate, int roomNumber){
+        BedRoom bedroom = new BedRoom(RoomType.FAMILY, rate, roomNumber);
+        this.bedRooms.add(bedroom);
+        System.out.println("Added family bedroom: " + roomNumber + ", rate: " + rate);
     }
 }
