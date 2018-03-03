@@ -37,21 +37,21 @@ public class Hotel {
     }
 
     // Add new single bedroom, with it's number and rate, (with no guests) to the hotel:
-    public void addSingleBedroom(Double rate, int roomNumber){
+    public void addSingleBedRoom(Double rate, int roomNumber){
         BedRoom bedroom = new BedRoom(RoomType.SINGLE, rate, roomNumber);
         this.bedRooms.add(bedroom);
         System.out.println("Added single bedroom: " + roomNumber + ", rate: " + rate);
     }
 
     // Add new double bedroom, with it's number and rate, (with no guests) to the hotel:
-    public void addDoubleBedroom(Double rate, int roomNumber){
+    public void addDoubleBedRoom(Double rate, int roomNumber){
         BedRoom bedroom = new BedRoom(RoomType.DOUBLE, rate, roomNumber);
         this.bedRooms.add(bedroom);
         System.out.println("Added double bedroom: " + roomNumber + ", rate: " + rate);
     }
 
     // Add new family bedroom, with it's number and rate, (with no guests) to the hotel:
-    public void addFamilyBedroom(Double rate, int roomNumber){
+    public void addFamilyBedRoom(Double rate, int roomNumber){
         BedRoom bedroom = new BedRoom(RoomType.FAMILY, rate, roomNumber);
         this.bedRooms.add(bedroom);
         System.out.println("Added family bedroom: " + roomNumber + ", rate: " + rate);
