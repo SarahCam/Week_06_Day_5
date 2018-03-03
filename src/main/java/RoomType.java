@@ -9,18 +9,18 @@ public enum RoomType {
     LARGE_DINING(100, "Large Dining Room");
 
     private final int capacity;
-    private final String type;
+    private final String title;
 
-    RoomType(int capacity, String type) {
+    RoomType(int capacity, String title) {
         this.capacity = capacity;
-        this.type = type;
+        this.title = title;
     }
 
     public int getCapacity() {
         return capacity;
     }
 
-    public String getType() {
-        return type;
+    public String getTitle() {
+        return title;
     }
 }

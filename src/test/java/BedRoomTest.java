@@ -13,7 +13,18 @@ public class BedRoomTest {
     }
 
     @Test
+    public void canGetType(){
+        assertEquals(RoomType.SINGLE, singleBedRoom.getType());
+    }
+
+    @Test
     public void canGetCapacity(){
         assertEquals(1, singleBedRoom.getCapacity());
     }
+
+    @Test
+    public void canGetTitle(){
+        assertEquals("Single", singleBedRoom.getTitle());
+    }
+
 }

@@ -14,4 +14,8 @@ public abstract class Room {
         return type.getCapacity();
     }
 
+    public String getTitle() {
+        return type.getTitle();
+    }
+
 }
