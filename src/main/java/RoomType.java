@@ -6,7 +6,8 @@ public enum RoomType {
     MEDIUM_CONFERENCE(50, "Medium Conference Room"),
     LARGE_CONFERENCE(100, "Large Conference Room"),
     SMALL_DINING(30, "Small Dining Room"),
-    LARGE_DINING(100, "Large Dining Room");
+    MEDIUM_DINING(70, "Medium Dining Room"),
+    LARGE_DINING(200, "Large Dining Room");
 
     private final int capacity;
     private final String title;

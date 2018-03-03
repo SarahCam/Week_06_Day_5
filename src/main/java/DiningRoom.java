@@ -7,6 +7,7 @@ public class DiningRoom extends Room {
         this.roomName = roomName;
     }
 
+    // Get the room name, e.g. "Bar, "Conservatory" or "Formal Dining Room":
     public String getRoomName() {
         return roomName;
     }
