@@ -1,9 +1,13 @@
+import java.util.ArrayList;
+
 public abstract class Room {
 
     private RoomType type;
+    private ArrayList<Guest> guests;
 
     public Room(RoomType type) {
         this.type = type;
+        this.guests = new ArrayList<Guest>();
     }
 
     // Get the RoomType ENUM, e.g. SINGLE, DOUBLE etc:
@@ -19,6 +23,11 @@ public abstract class Room {
     // Get the room's title, e.g. "Single", "Double" - which is a property of the RoomType ENUM:
     public String getTitle() {
         return type.getTitle();
+    }
+
+    // Add a guest to this room:
+    public void addGuest(Guest guest){
+        this.guests.add(guest);
     }
 
 }

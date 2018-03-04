@@ -15,6 +15,7 @@ public class HotelTest {
     public void before(){
         hotel = new Hotel();
         guest1 = new Guest("Donald Trump");
+        guest2 = new Guest("Hilary Clinton");
     }
 
     // BEDROOM TESTS ///////////////////////////////////////////////////////////
@@ -77,6 +78,7 @@ public class HotelTest {
         hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
         hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
         hotel.checkInGuest(guest1, 102);
+//        assertEquals("Hilary Clinton", hotel.findBedRoom(102).findGuests.get(0));
     }
 
 }

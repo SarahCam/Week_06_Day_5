@@ -6,12 +6,14 @@ import static org.junit.Assert.assertEquals;
 public class BedRoomTest {
 
     BedRoom singleBedRoom, doubleBedRoom, familyBedRoom;
+    Guest guest1;
 
     @Before
     public void before(){
         singleBedRoom = new BedRoom(RoomType.SINGLE, 109.00, 101);
         doubleBedRoom = new BedRoom(RoomType.DOUBLE, 129.00, 102);
         familyBedRoom = new BedRoom(RoomType.FAMILY, 159.00, 103);
+        guest1 = new Guest("Mary Poppins");
     }
 
     @Test
@@ -47,5 +49,10 @@ public class BedRoomTest {
         assertEquals(101, singleBedRoom.getRoomNumber());
         assertEquals(102, doubleBedRoom.getRoomNumber());
         assertEquals(103, familyBedRoom.getRoomNumber());
+    }
+
+    @Test
+    public void canAddGuest(){
+        singleBedRoom.addGuest(guest1);
     }
 }

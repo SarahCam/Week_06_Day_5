@@ -52,12 +52,12 @@ public class Hotel {
             }
         }
         System.out.println("Cannot find bedroom: " + roomNumber);
-        return this.bedRooms.get(0);
+        return this.bedRooms.get(0);                                // NOT A GOOD SOLUTION: NEED TO THINK ABOUT THIS
     }
 
     // Check-in guest to a specified room number:
     public void checkInGuest(Guest guest, int roomNumber){
-//        this.findBedRoom(roomNumber).addGuest(guest);
+        this.findBedRoom(roomNumber).addGuest(guest);
         System.out.println("Checked in guest: " + guest.getName() + " into room: " + roomNumber);
     }
 }
