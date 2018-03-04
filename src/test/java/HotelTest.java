@@ -134,7 +134,7 @@ public class HotelTest {
         hotel.checkInGuest(guest1, 103);
         hotel.checkInGuest(guest2, 103);
         assertEquals(2, hotel.findBedRoom(103).getGuests().size());
-//        assertArrayEquals(["Donald Trump", "Hilary Clinton"], hotel.findBedRoom(103).getGuestNames());
+        assertArrayEquals(new String[]{"Donald Trump", "Hilary Clinton"}, hotel.findBedRoom(103).getGuestNames());
     }
 
 }
