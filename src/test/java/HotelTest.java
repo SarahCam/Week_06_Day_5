@@ -320,14 +320,14 @@ public class HotelTest {
         assertEquals(0, hotel.findDiningRoom("The Snug").getGuests().size());
     }
 
-//    @Test
-//    public void canGetGuestNames___FOR_GIVEN_ROOM_NUMBER(){
-//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
-//        hotel.checkInGuest(guest1, 103);
-//        hotel.checkInGuest(guest2, 103);
-//        assertEquals(2, hotel.findBedRoom(103).getGuests().size());
-//        assertArrayEquals(new String[]{"Donald Trump", "Hilary Clinton"}, hotel.findBedRoom(103).getGuestNames());
-//    }
+    @Test
+    public void canGetDiningGuestNames___FOR_GIVEN_ROOM_NAME(){
+        hotel.addDiningRoom(RoomType.SMALL_DINING, "The Snug");
+        hotel.checkInDiningGuest(guest1, "The Snug");
+        hotel.checkInDiningGuest(guest2, "The Snug");
+        assertEquals(2, hotel.findDiningRoom("The Snug").getGuests().size());
+        assertArrayEquals(new String[]{"Donald Trump", "Hilary Clinton"}, hotel.findDiningRoom("The Snug").getGuestNames());
+    }
 
 
 
