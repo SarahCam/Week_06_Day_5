@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 public class HotelTest {
 
     Hotel hotel;
-    Guest guest1, guest2;
+    Guest guest1, guest2, agentSmith;
 
 
     @Before
@@ -17,6 +17,7 @@ public class HotelTest {
         hotel = new Hotel();
         guest1 = new Guest("Donald Trump");
         guest2 = new Guest("Hilary Clinton");
+        agentSmith = new Guest("Agent Smith");
     }
 
     // SIMPLE GETTER TESTS ////////////////////////////////////////////////////////
@@ -91,7 +92,7 @@ public class HotelTest {
     }
 
     @Test
-    public void canCheckInGuest___guest1___room102(){
+    public void canCheckInGuest___guest2___room102(){
         hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
         hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
         hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
@@ -187,44 +188,45 @@ public class HotelTest {
         assertEquals(null, hotel.findConferenceRoom("Ball Room"));
     }
 
-//    @Test
-//    public void canCheckInGuest___guest1___room102(){
-//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
-//        hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
-//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
-//        hotel.checkInGuest(guest2, 102);
-//        assertEquals(1, hotel.findBedRoom(102).getGuests().size());
-//        assertEquals("Hilary Clinton", hotel.findBedRoom(102).getGuests().get(0).getName());
-//    }
-//
-//    @Test
-//    public void canCheckInGuest___guest1_and_Guest2___room103(){
-//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
-//        hotel.checkInGuest(guest1, 103);
-//        hotel.checkInGuest(guest2, 103);
-//        assertEquals(2, hotel.findBedRoom(103).getGuests().size());
-//        assertEquals("Donald Trump", hotel.findBedRoom(103).getGuests().get(0).getName());
-//        assertEquals("Hilary Clinton", hotel.findBedRoom(103).getGuests().get(1).getName());
-//    }
-//
-//    @Test
-//    public void canCheckInGuest___ONLY_IF_THERE_IS_SPACE(){
-//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
-//        hotel.checkInGuest(guest1, 101);
-//        hotel.checkInGuest(guest2, 101);
-//        assertEquals(1, hotel.findBedRoom(101).getGuests().size());
-//        assertEquals("Donald Trump", hotel.findBedRoom(101).getGuests().get(0).getName());
-//    }
-//
-//    @Test
-//    public void canCheckInGuest___ONLY_IF_THERE_IS_SPACE___AND_ROOM_EXISTS(){
-//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
-//        hotel.checkInGuest(guest1, 102);
-//        hotel.checkInGuest(guest2, 102);
-//        assertEquals(null, hotel.findBedRoom(102));
-//        assertEquals(0, hotel.findBedRoom(101).getGuests().size());
-//    }
-//
+    @Test
+    public void canCheckInConferenceGuest___guest2___The_Orange_Room(){
+        hotel.addConferenceRoom(RoomType.MEDIUM_CONFERENCE, 900.00, "The Orange Room");
+        hotel.checkInConferenceGuest(guest2, "The Orange Room");
+        assertEquals(1, hotel.findConferenceRoom("The Orange Room").getGuests().size());
+        assertEquals("Hilary Clinton", hotel.findConferenceRoom("The Orange Room").getGuests().get(0).getName());
+    }
+
+    @Test
+    public void canCheckInConferenceGuest___guest1_and_Guest2___The_Orange_Room(){
+        hotel.addConferenceRoom(RoomType.MEDIUM_CONFERENCE, 900.00, "The Orange Room");
+        hotel.checkInConferenceGuest(guest1, "The Orange Room");
+        hotel.checkInConferenceGuest(guest2, "The Orange Room");
+        assertEquals(2, hotel.findConferenceRoom("The Orange Room").getGuests().size());
+        assertEquals("Donald Trump", hotel.findConferenceRoom("The Orange Room").getGuests().get(0).getName());
+        assertEquals("Hilary Clinton", hotel.findConferenceRoom("The Orange Room").getGuests().get(1).getName());
+    }
+
+    @Test
+    public void canCheckInConferenceGuest___ONLY_IF_THERE_IS_SPACE(){
+        hotel.addConferenceRoom(RoomType.SMALL_CONFERENCE, 500.00, "The Matrix");
+        for(int i = 0; i < 12; i++) {
+            hotel.checkInConferenceGuest(agentSmith, "The Matrix");
+        }
+        assertEquals(10, hotel.findConferenceRoom("The Matrix").getGuests().size());
+        assertEquals(10, hotel.findConferenceRoom("The Matrix").getCapacity());
+        assertEquals("Agent Smith", hotel.findConferenceRoom("The Matrix").getGuests().get(0).getName());
+        assertEquals("Agent Smith", hotel.findConferenceRoom("The Matrix").getGuests().get(9).getName());
+    }
+
+    @Test
+    public void canCheckInConferenceGuest___ONLY_IF_THERE_IS_SPACE___AND_ROOM_EXISTS(){
+        hotel.addConferenceRoom(RoomType.SMALL_CONFERENCE, 500.00, "Ball Room");
+        hotel.checkInConferenceGuest(guest1, "Non Existent Room");
+        hotel.checkInConferenceGuest(guest2, "Non Existent Room");
+        assertEquals(null, hotel.findConferenceRoom("Non Existent Room"));
+        assertEquals(0, hotel.findConferenceRoom("Ball Room").getGuests().size());
+    }
+
 //    @Test
 //    public void canGetGuestNames___FOR_GIVEN_ROOM_NUMBER(){
 //        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);

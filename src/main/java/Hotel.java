@@ -24,18 +24,6 @@ public class Hotel {
         return diningRooms;
     }
 
-    public void setBedRooms(ArrayList<BedRoom> bedRooms) {
-        this.bedRooms = bedRooms;
-    }
-
-    public void setConferenceRooms(ArrayList<ConferenceRoom> conferenceRooms) {
-        this.conferenceRooms = conferenceRooms;
-    }
-
-    public void setDiningRooms(ArrayList<DiningRoom> diningRooms) {
-        this.diningRooms = diningRooms;
-    }
-
     // Add new bedroom, with it's number and rate, (with no guests) to the hotel:
     public void addBedRoom(RoomType type, Double rate, int roomNumber){
         BedRoom bedroom = new BedRoom(type, rate, roomNumber);
@@ -78,7 +66,17 @@ public class Hotel {
     public void checkInGuest(Guest guest, int roomNumber){
         if (this.findBedRoom(roomNumber) != null) {
             this.findBedRoom(roomNumber).addGuest(guest);
+            System.out.println("Checked in guest: " + guest.getName() + " into room: " + roomNumber);
         }
-        System.out.println("Checked in guest: " + guest.getName() + " into room: " + roomNumber);
     }
+
+    // Check-in guest to a specified conference room - ONLY if the room exists and there is capacity:
+    public void checkInConferenceGuest(Guest guest, String roomName){
+        if (this.findConferenceRoom(roomName) != null) {
+            this.findConferenceRoom(roomName).addGuest(guest);
+            System.out.println("Checked in guest: " + guest.getName() + " into room: " + roomName);
+        }
+    }
+
+
 }
