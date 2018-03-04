@@ -38,6 +38,13 @@ public class Hotel {
         System.out.println("Added " + type + " conference room: " + roomName + ", rate: " + rate);
     }
 
+    // Add new dining room, with it's name, (with no guests) to the hotel:
+    public void addDiningRoom(RoomType type, String roomName){
+        DiningRoom diningRoom = new DiningRoom(type, roomName);
+        this.diningRooms.add(diningRoom);
+        System.out.println("Added " + type + " dining room: " + roomName);
+    }
+
     // Find a particular bedroom number in this hotel, and return the BedRoom instance - return a null bedroom if not:
     public BedRoom findBedRoom(int roomNumber){
         BedRoom foundBedRoom = null;
