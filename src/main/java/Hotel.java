@@ -97,5 +97,13 @@ public class Hotel {
         }
     }
 
+    // Check-in guest to a specified dining room - ONLY if the room exists and there is capacity:
+    public void checkInDiningGuest(Guest guest, String roomName){
+        if (this.findDiningRoom(roomName) != null) {
+            this.findDiningRoom(roomName).addGuest(guest);
+            System.out.println("Checked in guest: " + guest.getName() + " into room: " + roomName);
+        }
+    }
+
 
 }

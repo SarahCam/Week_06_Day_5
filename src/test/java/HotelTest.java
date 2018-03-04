@@ -277,49 +277,49 @@ public class HotelTest {
     }
 
     @Test
-    public void cannotFindDiningRoom___room104(){
+    public void cannotFindDiningRoom___Conservatory(){
         hotel.addDiningRoom(RoomType.SMALL_DINING, "The Snug");
         assertEquals(null, hotel.findDiningRoom("Conservatory"));
     }
 
-//    @Test
-//    public void canCheckInGuest___guest1___room102(){
-//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
-//        hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
-//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
-//        hotel.checkInGuest(guest2, 102);
-//        assertEquals(1, hotel.findBedRoom(102).getGuests().size());
-//        assertEquals("Hilary Clinton", hotel.findBedRoom(102).getGuests().get(0).getName());
-//    }
-//
-//    @Test
-//    public void canCheckInGuest___guest1_and_Guest2___room103(){
-//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
-//        hotel.checkInGuest(guest1, 103);
-//        hotel.checkInGuest(guest2, 103);
-//        assertEquals(2, hotel.findBedRoom(103).getGuests().size());
-//        assertEquals("Donald Trump", hotel.findBedRoom(103).getGuests().get(0).getName());
-//        assertEquals("Hilary Clinton", hotel.findBedRoom(103).getGuests().get(1).getName());
-//    }
-//
-//    @Test
-//    public void canCheckInGuest___ONLY_IF_THERE_IS_SPACE(){
-//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
-//        hotel.checkInGuest(guest1, 101);
-//        hotel.checkInGuest(guest2, 101);
-//        assertEquals(1, hotel.findBedRoom(101).getGuests().size());
-//        assertEquals("Donald Trump", hotel.findBedRoom(101).getGuests().get(0).getName());
-//    }
-//
-//    @Test
-//    public void canCheckInGuest___ONLY_IF_THERE_IS_SPACE___AND_ROOM_EXISTS(){
-//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
-//        hotel.checkInGuest(guest1, 102);
-//        hotel.checkInGuest(guest2, 102);
-//        assertEquals(null, hotel.findBedRoom(102));
-//        assertEquals(0, hotel.findBedRoom(101).getGuests().size());
-//    }
-//
+    @Test
+    public void canCheckInDiningGuest___guest2___The_Snug(){
+        hotel.addDiningRoom(RoomType.SMALL_DINING, "The Snug");
+        hotel.checkInDiningGuest(guest2, "The Snug");
+        assertEquals(1, hotel.findDiningRoom("The Snug").getGuests().size());
+        assertEquals("Hilary Clinton", hotel.findDiningRoom("The Snug").getGuests().get(0).getName());
+    }
+
+    @Test
+    public void canCheckInDiningGuest___guest1_and_guest2___The_Snug(){
+        hotel.addDiningRoom(RoomType.SMALL_DINING, "The Snug");
+        hotel.checkInDiningGuest(guest1, "The Snug");
+        hotel.checkInDiningGuest(guest2, "The Snug");
+        assertEquals(2, hotel.findDiningRoom("The Snug").getGuests().size());
+        assertEquals("Donald Trump", hotel.findDiningRoom("The Snug").getGuests().get(0).getName());
+        assertEquals("Hilary Clinton", hotel.findDiningRoom("The Snug").getGuests().get(1).getName());
+    }
+
+    @Test
+    public void canCheckInDiningGuest___ONLY_IF_THERE_IS_SPACE(){
+        hotel.addDiningRoom(RoomType.SMALL_DINING, "The Matrix Kitchen");
+        for(int i = 0; i < 35; i++) {
+            hotel.checkInDiningGuest(agentSmith, "The Matrix Kitchen");
+        }
+        assertEquals(30, hotel.findDiningRoom("The Matrix Kitchen").getGuests().size());
+        assertEquals("Agent Smith", hotel.findDiningRoom("The Matrix Kitchen").getGuests().get(0).getName());
+        assertEquals("Agent Smith", hotel.findDiningRoom("The Matrix Kitchen").getGuests().get(29).getName());
+    }
+
+    @Test
+    public void canCheckInDiningGuest___ONLY_IF_THERE_IS_SPACE___AND_ROOM_EXISTS(){
+        hotel.addDiningRoom(RoomType.SMALL_DINING, "The Snug");
+        hotel.checkInDiningGuest(guest1, "The Black Hole");
+        hotel.checkInDiningGuest(guest2, "The Black Hole");
+        assertEquals(null, hotel.findDiningRoom("The Black Hole"));
+        assertEquals(0, hotel.findDiningRoom("The Snug").getGuests().size());
+    }
+
 //    @Test
 //    public void canGetGuestNames___FOR_GIVEN_ROOM_NUMBER(){
 //        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
