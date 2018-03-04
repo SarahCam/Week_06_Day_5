@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class HotelTest {
@@ -125,6 +126,15 @@ public class HotelTest {
         hotel.checkInGuest(guest2, 102);
         assertEquals(null, hotel.findBedRoom(102));
         assertEquals(0, hotel.findBedRoom(101).getGuests().size());
+    }
+
+    @Test
+    public void canGetGuestNames___FOR_GIVEN_ROOM_NUMBER(){
+        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
+        hotel.checkInGuest(guest1, 103);
+        hotel.checkInGuest(guest2, 103);
+        assertEquals(2, hotel.findBedRoom(103).getGuests().size());
+//        assertArrayEquals(["Donald Trump", "Hilary Clinton"], hotel.findBedRoom(103).getGuestNames());
     }
 
 }

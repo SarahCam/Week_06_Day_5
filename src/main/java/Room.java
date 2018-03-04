@@ -30,6 +30,15 @@ public abstract class Room {
         return guests;
     }
 
+    // Get an Array of all the guests' names who are checked into this room:
+    public String[] getGuestNames(){
+        String[] guestNames = new String[this.guests.size()];
+        for (int i = 0; i < this.guests.size(); i++){
+            guestNames[i] = this.guests.get(i).getName();
+        }
+        return guestNames;
+    }
+
     // Add guest to this room - ONLY if there is capacity - return TRUE if guest successfully added:
     public boolean addGuest(Guest guest){
         if (this.guests.size() < this.getCapacity()) {

@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class BedRoomTest {
@@ -16,7 +17,7 @@ public class BedRoomTest {
         doubleBedRoom = new BedRoom(RoomType.DOUBLE, 129.00, 102);
         familyBedRoom = new BedRoom(RoomType.FAMILY, 159.00, 103);
         guest1 = new Guest("Mary Poppins");
-        guest2 = new Guest("Willy Wonker");
+        guest2 = new Guest("Willy Wonka");
     }
 
     @Test
@@ -70,5 +71,12 @@ public class BedRoomTest {
         assertEquals(true, singleBedRoom.addGuest(guest1));
         assertEquals(false, singleBedRoom.addGuest(guest2));
         assertEquals(1, singleBedRoom.getGuests().size());
+    }
+
+    @Test
+    public void canGetGuestNames(){
+        doubleBedRoom.addGuest(guest1);
+        doubleBedRoom.addGuest(guest2);
+        assertArrayEquals(new String[]{"Mary Poppins", "Willy Wonka"}, doubleBedRoom.getGuestNames());
     }
 }
