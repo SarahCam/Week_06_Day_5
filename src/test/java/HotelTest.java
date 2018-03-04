@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class HotelTest {
 
     Hotel hotel;
-    Guest guest1;
+    Guest guest1, guest2;
 
 
     @Before
@@ -78,7 +78,7 @@ public class HotelTest {
         hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
         hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
         hotel.checkInGuest(guest1, 102);
-//        assertEquals("Hilary Clinton", hotel.findBedRoom(102).findGuests.get(0));
+//        assertEquals("Hilary Clinton", hotel.findBedRoom(102).getGuests.get(0));
     }
 
 }

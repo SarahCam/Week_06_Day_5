@@ -25,6 +25,11 @@ public abstract class Room {
         return type.getTitle();
     }
 
+    // Get an ArrayList of all the guests checked into this room:
+    public ArrayList<Guest> getGuests(){
+        return guests;
+    }
+
     // Add a guest to this room:
     public void addGuest(Guest guest){
         this.guests.add(guest);
