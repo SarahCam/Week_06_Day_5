@@ -227,14 +227,14 @@ public class HotelTest {
         assertEquals(0, hotel.findConferenceRoom("Ball Room").getGuests().size());
     }
 
-//    @Test
-//    public void canGetGuestNames___FOR_GIVEN_ROOM_NUMBER(){
-//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
-//        hotel.checkInGuest(guest1, 103);
-//        hotel.checkInGuest(guest2, 103);
-//        assertEquals(2, hotel.findBedRoom(103).getGuests().size());
-//        assertArrayEquals(new String[]{"Donald Trump", "Hilary Clinton"}, hotel.findBedRoom(103).getGuestNames());
-//    }
+    @Test
+    public void canGetGuestNames___FOR_GIVEN_ROOM_NAME(){
+        hotel.addConferenceRoom(RoomType.SMALL_CONFERENCE, 500.00, "Ball Room");
+        hotel.checkInConferenceGuest(guest1, "Ball Room");
+        hotel.checkInConferenceGuest(guest2, "Ball Room");
+        assertEquals(2, hotel.findConferenceRoom("Ball Room").getGuests().size());
+        assertArrayEquals(new String[]{"Donald Trump", "Hilary Clinton"}, hotel.findConferenceRoom("Ball Room").getGuestNames());
+    }
 
     // DINING ROOM TESTS ///////////////////////////////////////////////////////
 
