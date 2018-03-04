@@ -172,14 +172,14 @@ public class HotelTest {
         assertEquals(100, hotel.getConferenceRooms().get(0).getCapacity());
     }
 
-//    @Test
-//    public void canFindBedRoom___room102(){
-//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
-//        hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
-//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
-//        assertEquals(102, hotel.findBedRoom(102).getRoomNumber());
-//    }
-//
+    @Test
+    public void canFindConferenceRoom___Royal_Suite(){
+        hotel.addConferenceRoom(RoomType.LARGE_CONFERENCE, 3000.00, "Ball Room");
+        hotel.addConferenceRoom(RoomType.MEDIUM_CONFERENCE, 800.00, "Royal Suite");
+        hotel.addConferenceRoom(RoomType.MEDIUM_CONFERENCE, 900.00, "The Orange Room");
+        assertEquals("Royal Suite", hotel.findConferenceRoom("Royal Suite").getRoomName());
+    }
+
 //    @Test
 //    public void cannotFindBedRoom___room104(){
 //        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
