@@ -39,7 +39,7 @@ public class HotelTest {
         assertEquals(diningRooms, hotel.getDiningRooms());
     }
 
-    // BEDROOM TESTS //////////////////////////////////////////////////////////////
+    // BED ROOM TESTS //////////////////////////////////////////////////////////////
 
     @Test
     public void canAddBedRoom___SINGLE(){
@@ -136,5 +136,203 @@ public class HotelTest {
         assertEquals(2, hotel.findBedRoom(103).getGuests().size());
         assertArrayEquals(new String[]{"Donald Trump", "Hilary Clinton"}, hotel.findBedRoom(103).getGuestNames());
     }
+
+    // CONFERENCE ROOM TESTS ///////////////////////////////////////////////////
+
+    @Test
+    public void canAddConferenceRoom___SMALL_CONFERENCE(){
+        hotel.addConferenceRoom(RoomType.SMALL_CONFERENCE, 600.00, "The Savoy Room");
+        assertEquals(1, hotel.getConferenceRooms().size());
+        assertEquals("The Savoy Room", hotel.getConferenceRooms().get(0).getRoomName());
+        assertEquals(600.00, hotel.getConferenceRooms().get(0).getRate(), 0.01);
+        assertEquals(RoomType.SMALL_CONFERENCE, hotel.getConferenceRooms().get(0).getType());
+        assertEquals("Small Conference Room", hotel.getConferenceRooms().get(0).getTitle());
+        assertEquals(10, hotel.getConferenceRooms().get(0).getCapacity());
+    }
+
+    @Test
+    public void canAddConferenceRoom___MEDIUM_CONFERENCE(){
+        hotel.addConferenceRoom(RoomType.MEDIUM_CONFERENCE, 1200.00, "Grand Piano Room");
+        assertEquals(1, hotel.getConferenceRooms().size());
+        assertEquals("Grand Piano Room", hotel.getConferenceRooms().get(0).getRoomName());
+        assertEquals(1200.00, hotel.getConferenceRooms().get(0).getRate(), 0.01);
+        assertEquals(RoomType.MEDIUM_CONFERENCE, hotel.getConferenceRooms().get(0).getType());
+        assertEquals("Medium Conference Room", hotel.getConferenceRooms().get(0).getTitle());
+        assertEquals(50, hotel.getConferenceRooms().get(0).getCapacity());
+    }
+
+    @Test
+    public void canAddConferenceRoom___LARGE_CONFERENCE(){
+        hotel.addConferenceRoom(RoomType.LARGE_CONFERENCE, 3000.00, "Ball Room");
+        assertEquals(1, hotel.getConferenceRooms().size());
+        assertEquals("Ball Room", hotel.getConferenceRooms().get(0).getRoomName());
+        assertEquals(3000.00, hotel.getConferenceRooms().get(0).getRate(), 0.01);
+        assertEquals(RoomType.LARGE_CONFERENCE, hotel.getConferenceRooms().get(0).getType());
+        assertEquals("Large Conference Room", hotel.getConferenceRooms().get(0).getTitle());
+        assertEquals(100, hotel.getConferenceRooms().get(0).getCapacity());
+    }
+
+//    @Test
+//    public void canFindBedRoom___room102(){
+//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
+//        hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
+//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
+//        assertEquals(102, hotel.findBedRoom(102).getRoomNumber());
+//    }
+//
+//    @Test
+//    public void cannotFindBedRoom___room104(){
+//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
+//        hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
+//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
+//        assertEquals(null, hotel.findBedRoom(104));  // NOT GOOD RETURN VALUE - RETHINK
+//    }
+//
+//    @Test
+//    public void canCheckInGuest___guest1___room102(){
+//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
+//        hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
+//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
+//        hotel.checkInGuest(guest2, 102);
+//        assertEquals(1, hotel.findBedRoom(102).getGuests().size());
+//        assertEquals("Hilary Clinton", hotel.findBedRoom(102).getGuests().get(0).getName());
+//    }
+//
+//    @Test
+//    public void canCheckInGuest___guest1_and_Guest2___room103(){
+//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
+//        hotel.checkInGuest(guest1, 103);
+//        hotel.checkInGuest(guest2, 103);
+//        assertEquals(2, hotel.findBedRoom(103).getGuests().size());
+//        assertEquals("Donald Trump", hotel.findBedRoom(103).getGuests().get(0).getName());
+//        assertEquals("Hilary Clinton", hotel.findBedRoom(103).getGuests().get(1).getName());
+//    }
+//
+//    @Test
+//    public void canCheckInGuest___ONLY_IF_THERE_IS_SPACE(){
+//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
+//        hotel.checkInGuest(guest1, 101);
+//        hotel.checkInGuest(guest2, 101);
+//        assertEquals(1, hotel.findBedRoom(101).getGuests().size());
+//        assertEquals("Donald Trump", hotel.findBedRoom(101).getGuests().get(0).getName());
+//    }
+//
+//    @Test
+//    public void canCheckInGuest___ONLY_IF_THERE_IS_SPACE___AND_ROOM_EXISTS(){
+//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
+//        hotel.checkInGuest(guest1, 102);
+//        hotel.checkInGuest(guest2, 102);
+//        assertEquals(null, hotel.findBedRoom(102));
+//        assertEquals(0, hotel.findBedRoom(101).getGuests().size());
+//    }
+//
+//    @Test
+//    public void canGetGuestNames___FOR_GIVEN_ROOM_NUMBER(){
+//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
+//        hotel.checkInGuest(guest1, 103);
+//        hotel.checkInGuest(guest2, 103);
+//        assertEquals(2, hotel.findBedRoom(103).getGuests().size());
+//        assertArrayEquals(new String[]{"Donald Trump", "Hilary Clinton"}, hotel.findBedRoom(103).getGuestNames());
+//    }
+
+    // DINING ROOM TESTS ///////////////////////////////////////////////////////
+
+//    @Test
+//    public void canAddBedRoom___SINGLE(){
+//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
+//        assertEquals(1, hotel.getBedRooms().size());
+//        assertEquals(101, hotel.getBedRooms().get(0).getRoomNumber());
+//        assertEquals(109.00, hotel.getBedRooms().get(0).getRate(), 0.01);
+//        assertEquals(RoomType.SINGLE, hotel.getBedRooms().get(0).getType());
+//        assertEquals("Single", hotel.getBedRooms().get(0).getTitle());
+//        assertEquals(1, hotel.getBedRooms().get(0).getCapacity());
+//    }
+//
+//    @Test
+//    public void canAddBedRoom___DOUBLE(){
+//        hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
+//        assertEquals(1, hotel.getBedRooms().size());
+//        assertEquals(102, hotel.getBedRooms().get(0).getRoomNumber());
+//        assertEquals(129.00, hotel.getBedRooms().get(0).getRate(), 0.01);
+//        assertEquals(RoomType.DOUBLE, hotel.getBedRooms().get(0).getType());
+//        assertEquals("Double", hotel.getBedRooms().get(0).getTitle());
+//        assertEquals(2, hotel.getBedRooms().get(0).getCapacity());
+//    }
+//
+//    @Test
+//    public void canAddBedRoom___FAMILY(){
+//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
+//        assertEquals(1, hotel.getBedRooms().size());
+//        assertEquals(103, hotel.getBedRooms().get(0).getRoomNumber());
+//        assertEquals(159.00, hotel.getBedRooms().get(0).getRate(), 0.01);
+//        assertEquals(RoomType.FAMILY, hotel.getBedRooms().get(0).getType());
+//        assertEquals("Family", hotel.getBedRooms().get(0).getTitle());
+//        assertEquals(4, hotel.getBedRooms().get(0).getCapacity());
+//    }
+//
+//    @Test
+//    public void canFindBedRoom___room102(){
+//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
+//        hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
+//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
+//        assertEquals(102, hotel.findBedRoom(102).getRoomNumber());
+//    }
+//
+//    @Test
+//    public void cannotFindBedRoom___room104(){
+//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
+//        hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
+//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
+//        assertEquals(null, hotel.findBedRoom(104));  // NOT GOOD RETURN VALUE - RETHINK
+//    }
+//
+//    @Test
+//    public void canCheckInGuest___guest1___room102(){
+//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
+//        hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
+//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
+//        hotel.checkInGuest(guest2, 102);
+//        assertEquals(1, hotel.findBedRoom(102).getGuests().size());
+//        assertEquals("Hilary Clinton", hotel.findBedRoom(102).getGuests().get(0).getName());
+//    }
+//
+//    @Test
+//    public void canCheckInGuest___guest1_and_Guest2___room103(){
+//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
+//        hotel.checkInGuest(guest1, 103);
+//        hotel.checkInGuest(guest2, 103);
+//        assertEquals(2, hotel.findBedRoom(103).getGuests().size());
+//        assertEquals("Donald Trump", hotel.findBedRoom(103).getGuests().get(0).getName());
+//        assertEquals("Hilary Clinton", hotel.findBedRoom(103).getGuests().get(1).getName());
+//    }
+//
+//    @Test
+//    public void canCheckInGuest___ONLY_IF_THERE_IS_SPACE(){
+//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
+//        hotel.checkInGuest(guest1, 101);
+//        hotel.checkInGuest(guest2, 101);
+//        assertEquals(1, hotel.findBedRoom(101).getGuests().size());
+//        assertEquals("Donald Trump", hotel.findBedRoom(101).getGuests().get(0).getName());
+//    }
+//
+//    @Test
+//    public void canCheckInGuest___ONLY_IF_THERE_IS_SPACE___AND_ROOM_EXISTS(){
+//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
+//        hotel.checkInGuest(guest1, 102);
+//        hotel.checkInGuest(guest2, 102);
+//        assertEquals(null, hotel.findBedRoom(102));
+//        assertEquals(0, hotel.findBedRoom(101).getGuests().size());
+//    }
+//
+//    @Test
+//    public void canGetGuestNames___FOR_GIVEN_ROOM_NUMBER(){
+//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
+//        hotel.checkInGuest(guest1, 103);
+//        hotel.checkInGuest(guest2, 103);
+//        assertEquals(2, hotel.findBedRoom(103).getGuests().size());
+//        assertArrayEquals(new String[]{"Donald Trump", "Hilary Clinton"}, hotel.findBedRoom(103).getGuestNames());
+//    }
+
+
 
 }
