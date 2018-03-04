@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class BedRoomTest {
 
     BedRoom singleBedRoom, doubleBedRoom, familyBedRoom;
-    Guest guest1;
+    Guest guest1, guest2;
 
     @Before
     public void before(){
@@ -16,6 +16,7 @@ public class BedRoomTest {
         doubleBedRoom = new BedRoom(RoomType.DOUBLE, 129.00, 102);
         familyBedRoom = new BedRoom(RoomType.FAMILY, 159.00, 103);
         guest1 = new Guest("Mary Poppins");
+        guest2 = new Guest("Willy Wonker");
     }
 
     @Test
@@ -61,6 +62,13 @@ public class BedRoomTest {
     @Test
     public void canGetGuests___SINGLE_BEDROOM(){
         singleBedRoom.addGuest(guest1);
+        assertEquals(1, singleBedRoom.getGuests().size());
+    }
+
+    @Test
+    public void canAddGuests___UP_TO_ROOM_CAPACITY_ONLY(){
+        assertEquals(true, singleBedRoom.addGuest(guest1));
+        assertEquals(false, singleBedRoom.addGuest(guest2));
         assertEquals(1, singleBedRoom.getGuests().size());
     }
 }

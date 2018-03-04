@@ -29,6 +29,7 @@ public class HotelTest {
     @Test
     public void canAddBedRoom___SINGLE(){
         hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
+        assertEquals(1, hotel.getBedRooms().size());
         assertEquals(101, hotel.getBedRooms().get(0).getRoomNumber());
         assertEquals(109.00, hotel.getBedRooms().get(0).getRate(), 0.01);
         assertEquals(RoomType.SINGLE, hotel.getBedRooms().get(0).getType());
@@ -39,6 +40,7 @@ public class HotelTest {
     @Test
     public void canAddBedRoom___DOUBLE(){
         hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
+        assertEquals(1, hotel.getBedRooms().size());
         assertEquals(102, hotel.getBedRooms().get(0).getRoomNumber());
         assertEquals(129.00, hotel.getBedRooms().get(0).getRate(), 0.01);
         assertEquals(RoomType.DOUBLE, hotel.getBedRooms().get(0).getType());
@@ -49,6 +51,7 @@ public class HotelTest {
     @Test
     public void canAddBedRoom___FAMILY(){
         hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
+        assertEquals(1, hotel.getBedRooms().size());
         assertEquals(103, hotel.getBedRooms().get(0).getRoomNumber());
         assertEquals(159.00, hotel.getBedRooms().get(0).getRate(), 0.01);
         assertEquals(RoomType.FAMILY, hotel.getBedRooms().get(0).getType());
@@ -69,7 +72,7 @@ public class HotelTest {
         hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
         hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
         hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
-        assertEquals(101, hotel.findBedRoom(104).getRoomNumber());
+        assertEquals(101, hotel.findBedRoom(104).getRoomNumber());  // NOT GOOD TEST - RETHINK
     }
 
     @Test
@@ -77,8 +80,28 @@ public class HotelTest {
         hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
         hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
         hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
-        hotel.checkInGuest(guest1, 102);
-//        assertEquals("Hilary Clinton", hotel.findBedRoom(102).getGuests.get(0));
+        hotel.checkInGuest(guest2, 102);
+        assertEquals(1, hotel.findBedRoom(102).getGuests().size());
+        assertEquals("Hilary Clinton", hotel.findBedRoom(102).getGuests().get(0).getName());
+    }
+
+    @Test
+    public void canCheckInGuest___guest1_and_Guest2___room103(){
+        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
+        hotel.checkInGuest(guest1, 103);
+        hotel.checkInGuest(guest2, 103);
+        assertEquals(2, hotel.findBedRoom(103).getGuests().size());
+        assertEquals("Donald Trump", hotel.findBedRoom(103).getGuests().get(0).getName());
+        assertEquals("Hilary Clinton", hotel.findBedRoom(103).getGuests().get(1).getName());
+    }
+
+    @Test
+    public void canCheckInGuest__ONLY_IF_THERE_IS_SPACE(){
+        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
+        hotel.checkInGuest(guest1, 101);
+        hotel.checkInGuest(guest2, 101);
+        assertEquals(1, hotel.findBedRoom(101).getGuests().size());
+        assertEquals("Donald Trump", hotel.findBedRoom(103).getGuests().get(0).getName());
     }
 
 }

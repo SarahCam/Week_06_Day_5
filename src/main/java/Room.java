@@ -30,9 +30,13 @@ public abstract class Room {
         return guests;
     }
 
-    // Add a guest to this room:
-    public void addGuest(Guest guest){
-        this.guests.add(guest);
+    // Add guest to this room - ONLY if there is capacity - return TRUE if guest successfully added:
+    public boolean addGuest(Guest guest){
+        if (this.guests.size() < this.getCapacity()) {
+            this.guests.add(guest);
+            return true;
+        }
+        return false;
     }
 
 }
