@@ -43,21 +43,23 @@ public class Hotel {
         System.out.println("Added " + type + " bedroom: " + roomNumber + ", rate: " + rate);
     }
 
-    // Find a particular bedroom number in this hotel, and return the BedRoom instance:
+    // Find a particular bedroom number in this hotel, and return the BedRoom instance - return a null bedroom if not:
     public BedRoom findBedRoom(int roomNumber){
+        BedRoom foundBedRoom = null;
         for (BedRoom bedRoom : this.bedRooms){
             if (bedRoom.getRoomNumber() == roomNumber){
                 System.out.println("Found bedroom: " + roomNumber);
-                return bedRoom;
+                foundBedRoom = bedRoom;
             }
         }
-        System.out.println("Cannot find bedroom: " + roomNumber);
-        return this.bedRooms.get(0);                                // NOT A GOOD SOLUTION: NEED TO THINK ABOUT THIS
+        return foundBedRoom;
     }
 
-    // Check-in guest to a specified room number:
+    // Check-in guest to a specified room number - ONLY if the room exists and there is capacity:
     public void checkInGuest(Guest guest, int roomNumber){
-        this.findBedRoom(roomNumber).addGuest(guest);
+        if (this.findBedRoom(roomNumber) != null) {
+            this.findBedRoom(roomNumber).addGuest(guest);
+        }
         System.out.println("Checked in guest: " + guest.getName() + " into room: " + roomNumber);
     }
 }

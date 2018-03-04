@@ -18,13 +18,27 @@ public class HotelTest {
         guest2 = new Guest("Hilary Clinton");
     }
 
-    // BEDROOM TESTS ///////////////////////////////////////////////////////////
+    // SIMPLE GETTER TESTS ////////////////////////////////////////////////////////
 
     @Test
-    public void canGetBedrooms(){
-        ArrayList<BedRoom> bedrooms = new ArrayList<BedRoom>();
-        assertEquals(bedrooms, hotel.getBedRooms());
+    public void canGetBedRooms(){
+        ArrayList<BedRoom> bedRooms = new ArrayList<BedRoom>();
+        assertEquals(bedRooms, hotel.getBedRooms());
     }
+
+    @Test
+    public void canGetConferenceRooms(){
+        ArrayList<ConferenceRoom> conferenceRooms = new ArrayList<ConferenceRoom>();
+        assertEquals(conferenceRooms, hotel.getConferenceRooms());
+    }
+
+    @Test
+    public void canGetDiningRooms(){
+        ArrayList<DiningRoom> diningRooms = new ArrayList<DiningRoom>();
+        assertEquals(diningRooms, hotel.getDiningRooms());
+    }
+
+    // BEDROOM TESTS //////////////////////////////////////////////////////////////
 
     @Test
     public void canAddBedRoom___SINGLE(){
@@ -72,7 +86,7 @@ public class HotelTest {
         hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
         hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
         hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
-        assertEquals(101, hotel.findBedRoom(104).getRoomNumber());  // NOT GOOD TEST - RETHINK
+        assertEquals(null, hotel.findBedRoom(104));  // NOT GOOD RETURN VALUE - RETHINK
     }
 
     @Test
@@ -96,12 +110,21 @@ public class HotelTest {
     }
 
     @Test
-    public void canCheckInGuest__ONLY_IF_THERE_IS_SPACE(){
+    public void canCheckInGuest___ONLY_IF_THERE_IS_SPACE(){
         hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
         hotel.checkInGuest(guest1, 101);
         hotel.checkInGuest(guest2, 101);
         assertEquals(1, hotel.findBedRoom(101).getGuests().size());
-        assertEquals("Donald Trump", hotel.findBedRoom(103).getGuests().get(0).getName());
+        assertEquals("Donald Trump", hotel.findBedRoom(101).getGuests().get(0).getName());
+    }
+
+    @Test
+    public void canCheckInGuest___ONLY_IF_THERE_IS_SPACE___AND_ROOM_EXISTS(){
+        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
+        hotel.checkInGuest(guest1, 102);
+        hotel.checkInGuest(guest2, 102);
+        assertEquals(null, hotel.findBedRoom(102));
+        assertEquals(0, hotel.findBedRoom(101).getGuests().size());
     }
 
 }
