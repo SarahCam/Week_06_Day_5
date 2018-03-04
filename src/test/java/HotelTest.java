@@ -329,6 +329,19 @@ public class HotelTest {
         assertArrayEquals(new String[]{"Donald Trump", "Hilary Clinton"}, hotel.findDiningRoom("The Snug").getGuestNames());
     }
 
+    // EXTENSION: TESTS /////////////////////////////////////////////////////////////
+
+    @Test
+    public void canfindVacantBedRooms(){
+        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
+        hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
+        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
+        hotel.checkInGuest(guest1, 102);
+        hotel.checkInGuest(guest2, 102);
+        assertEquals(101, hotel.findVacantBedRooms().get(0), 0);
+        assertEquals(103, hotel.findVacantBedRooms().get(1), 0);
+    }
+
 
 
 }

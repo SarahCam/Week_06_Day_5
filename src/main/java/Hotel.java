@@ -105,5 +105,15 @@ public class Hotel {
         }
     }
 
+    // Find vacant bedrooms - return an ArrayList of the room numbers that are vacant:
+    public ArrayList<Integer> findVacantBedRooms(){
+        ArrayList<Integer> vacantBedRooms = new ArrayList<Integer>();
+        for(BedRoom bedRoom : this.bedRooms){
+            if (bedRoom.getGuests().size() == 0){
+                vacantBedRooms.add(bedRoom.getRoomNumber());
+            }
+        }
+        return vacantBedRooms;
+    }
 
 }
