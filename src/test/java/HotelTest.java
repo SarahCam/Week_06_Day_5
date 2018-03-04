@@ -268,22 +268,20 @@ public class HotelTest {
         assertEquals(200, hotel.getDiningRooms().get(0).getCapacity());
     }
 
-//    @Test
-//    public void canFindBedRoom___room102(){
-//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
-//        hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
-//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
-//        assertEquals(102, hotel.findBedRoom(102).getRoomNumber());
-//    }
-//
-//    @Test
-//    public void cannotFindBedRoom___room104(){
-//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
-//        hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
-//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
-//        assertEquals(null, hotel.findBedRoom(104));  // NOT GOOD RETURN VALUE - RETHINK
-//    }
-//
+    @Test
+    public void canFindDiningRoom___The_Snug(){
+        hotel.addDiningRoom(RoomType.LARGE_DINING, "Main Restaurant");
+        hotel.addDiningRoom(RoomType.SMALL_DINING, "The Snug");
+        hotel.addDiningRoom(RoomType.LARGE_DINING, "Conservatory");
+        assertEquals("The Snug", hotel.findDiningRoom("The Snug").getRoomName());
+    }
+
+    @Test
+    public void cannotFindDiningRoom___room104(){
+        hotel.addDiningRoom(RoomType.SMALL_DINING, "The Snug");
+        assertEquals(null, hotel.findDiningRoom("Conservatory"));
+    }
+
 //    @Test
 //    public void canCheckInGuest___guest1___room102(){
 //        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);

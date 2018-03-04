@@ -69,6 +69,18 @@ public class Hotel {
         return foundConferenceRoom;
     }
 
+    // Find a particular dining room, by name, in this hotel, and return the DiningRoom instance - return a null DiningRoom if not:
+    public DiningRoom findDiningRoom(String roomName){
+        DiningRoom foundDiningRoom = null;
+        for (DiningRoom diningRoom : this.diningRooms){
+            if (diningRoom.getRoomName() == roomName){
+                System.out.println("Found dining room: " + roomName);
+                foundDiningRoom = diningRoom;
+            }
+        }
+        return foundDiningRoom;
+    }
+
     // Check-in guest to a specified room number - ONLY if the room exists and there is capacity:
     public void checkInGuest(Guest guest, int roomNumber){
         if (this.findBedRoom(roomNumber) != null) {
