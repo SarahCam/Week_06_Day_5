@@ -87,7 +87,7 @@ public class HotelTest {
         hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
         hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
         hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
-        assertEquals(null, hotel.findBedRoom(104));  // NOT GOOD RETURN VALUE - RETHINK
+        assertEquals(null, hotel.findBedRoom(104));
     }
 
     @Test
@@ -180,14 +180,13 @@ public class HotelTest {
         assertEquals("Royal Suite", hotel.findConferenceRoom("Royal Suite").getRoomName());
     }
 
-//    @Test
-//    public void cannotFindBedRoom___room104(){
-//        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
-//        hotel.addBedRoom(RoomType.DOUBLE, 129.00, 102);
-//        hotel.addBedRoom(RoomType.FAMILY, 159.00, 103);
-//        assertEquals(null, hotel.findBedRoom(104));  // NOT GOOD RETURN VALUE - RETHINK
-//    }
-//
+    @Test
+    public void cannotFindConferenceRoom___Ball_Room(){
+        hotel.addConferenceRoom(RoomType.MEDIUM_CONFERENCE, 800.00, "Royal Suite");
+        hotel.addConferenceRoom(RoomType.MEDIUM_CONFERENCE, 900.00, "The Orange Room");
+        assertEquals(null, hotel.findConferenceRoom("Ball Room"));
+    }
+
 //    @Test
 //    public void canCheckInGuest___guest1___room102(){
 //        hotel.addBedRoom(RoomType.SINGLE, 109.00, 101);
